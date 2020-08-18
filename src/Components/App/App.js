@@ -54,14 +54,13 @@ class App extends React.Component {
 
   addTrack(track) {
     if (this.state.PlaylistTracks.some(savedTrack => {
-        return savedTrack.id = track.id;
+       return savedTrack.id === track.id;
       })) {
+        console.log('The song already exists');
         return;
       } else {   
       let newPlaylist = this.state.PlaylistTracks;
-      console.log('This is newPlaylist variable before adding the track', newPlaylist);
       newPlaylist.push(track);
-      console.log('This is the newPlaylist variable after adding the new track', newPlaylist);
       this.setState({
         PlaylistTracks: newPlaylist
       })
@@ -69,11 +68,9 @@ class App extends React.Component {
     }
 
   removeTrack(track) {
-    const foundTrack = this.state.PlaylistTracks.find(matchTrack => {
-       matchTrack.id = track.id;
-    });
-    const index = this.state.PlaylistTracks.indexOf(foundTrack);
-    const newPlaylist = this.state.PlaylistTracks.splice(index, 1) 
+    const newPlaylist = this.state.PlaylistTracks.filter(e => {
+      return e !== track;
+    })
     this.setState({
       PlaylistTracks: newPlaylist
     });

@@ -16,7 +16,6 @@ export class TrackList extends React.Component {
     render() {
         return (
             <div  className="TrackList">
-                {this.test()}
                     {   
                         this.props.tracks.map(track => {
                             return <Track key={track.id} isRemoval={this.props.isRemoval} onRemove={this.props.onRemove} onAdd={this.props.onAdd} track={track} name={track.name} artist={track.artist} album={track.album} />

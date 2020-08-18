@@ -8,6 +8,16 @@ export class SearchBar extends React.Component {
         super(props)
         this.search = this.search.bind(this);
         this.handleTermChange = this.handleTermChange.bind(this);
+        this.handleEnterPress = this.handleEnterPress.bind(this);
+        this.state = {
+            term: ''
+        }
+    }
+
+    handleEnterPress(e) {
+        if (e.key === 'Enter') {
+            this.search();
+        }
     }
 
     handleTermChange(e) {
@@ -18,13 +28,15 @@ export class SearchBar extends React.Component {
     }
 
     search() {
+        if (this.state.term) {
         this.props.onSearch(this.state.term);
+        }
     }
 
     render() {
         return (    
             <div className="SearchBar">
-                <input onChange={this.handleTermChange} placeholder="Enter A Song, Album, or Artist" />
+                <input onChange={this.handleTermChange} onKeyPress={this.handleEnterPress} placeholder="Enter A Song, Album, or Artist" />
                 <button onClick={this.search} className="SearchButton">SEARCH</button>
             </div>
         );
