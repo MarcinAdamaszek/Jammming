@@ -21,12 +21,14 @@ class App extends React.Component {
           artist: 'Elektryczne Gitary',
           album: 'Na krzywy ryj',
           id: '85',
+          uri: 'asdfasdfsadf'
         },
         {
           name: 'Killer',
           artist: 'Elektryczne Gitary',
           album: 'Killer',
           id: '20',
+          uri: 'adbcxobisdgsd'
         }
       ],
       SearchResults: [
@@ -34,19 +36,22 @@ class App extends React.Component {
           name: 'Dzieci',
           artist: 'Elektryczne Gitary',
           album: 'Na krzywy ryj',
-          id: '85'
+          id: '85',
+          uri: 'bhdocbvhdsofig'
         },
         {
           name: 'Killer',
           artist: 'Elektryczne Gitary',
           album: 'Killer',
-          id: '20'
+          id: '20',
+          uri: 'cbvoxcbdi'
         },
         {
           name: 'Hustawka',
           artist: 'Elektryczne Gitary',
           album: 'Hustawki',
-          id: '38'
+          id: '38',
+          uri: 'sdbsdfbsdf'
         }
       ]
     }
@@ -86,7 +91,7 @@ class App extends React.Component {
     const trackUris = this.state.PlaylistTracks.map(track => {
       return track.uri;
     });
-    Spotify.savePlaylist(this.props.PlaylistName, trackUris);
+    Spotify.savePlaylist(this.state.PlaylistName, trackUris);
     this.setState({
       PlaylistName: 'New Playlist',
       playlistTracks: []
